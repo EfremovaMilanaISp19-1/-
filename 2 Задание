@@ -1,0 +1,188 @@
+java import.util.Список массивов;
+java import.util.Коллекции;
+java import.util.Компаратор;
+
+/**
+Класс   PhoneOperator общедоступный {
+
+    main  void  static  public(Строка[] аргументы) {
+
+        Оператор  связи = новый  оператор ("Киев Стар");
+
+        telecom.addCustomer(new Customer("Курочкин","Иван","Петрович","Киев, Крещатик.",
+                74305720455314L,345.45,456736.60,5353,3456));
+
+        telecom.addCustomer(new Customer("Ципочкин","Федор","Николаевич","Одесса, Деребасовсксая.",
+                6275849503679L,23276.50,23.66,1345,664546));
+
+        telecom.addCustomer(new Customer("Гусятников","Иван","Федорович","Донецк, Ленина.",
+                23571056402749L,113355.37,4346.34,42225,0));
+
+        telecom.addCustomer(new Customer("Перепелкин","Константин","Владимирович","Умань, Героев.",
+                56304829561048L,226794.35,234850.35,1154656,34535));
+
+        telecom.addCustomer(new Customer("Тетеров","Максим","Егорович","Львов, Площа.",
+                57205637402739L,336.98,2544645.75,8389,0));
+
+        telecom.addCustomer(new Customer("Уткин","Геннадий","Евдотович","Харьков, Майдан.",
+                56203657208632L,5.03,253666.43,458,855672));
+
+        telecom.addCustomer(new Customer("Воробьев","Александр","Никодимович","Киев, Оболонь.",
+                72275930573902L,2432568.11,2546746.54,245267,0));
+
+
+        System.out.println("Клиенты отсортированы по имени:");
+        ArrayList<Имя списка клиентов> = telecom.getCustomerListByAlphabet();
+        для (Имя клиента : ListName) {
+            System.out.println(cust);
+        }
+
+
+        System.out.println("Клиенты с местным временем более 10000 мс:");
+        ArrayList<Клиент> listLocal = telecom.getCustomerListWithLocal(10000);
+        для (Customer  cust : listLocal) {
+            System.out.println(cust);
+        }
+
+        System.out.println("Клиенты, у которых есть международные звонки:");
+        ArrayList<Список клиентов> Международный = telecom.getCustomerListWithInternational(0);
+        для (Customer  cust : Список международных) {
+            System.out.println(cust);
+        }
+
+    }
+}
+
+Класс оператора  {
+
+    Строка   имени оператора закрытая;
+    ArrayList  private<Клиент> Список клиентов = новый  список массивов<>();
+
+    Оператор(Строковое  имяоператора){
+        this.имяопераТора = имяопераТора;
+    }
+
+    AddCustomer  void(Клиент -клиент){
+        Список клиентов.добавить(клиент);
+    }
+
+    getOperatorName  Строка  public(){
+        Возврат  имени оператора;
+    }
+
+    ArrayList  public<Клиент> getCustomerListByAlphabet(){
+        ArrayList<Клиент> custlist = новый  ArrayList<>(Список клиентов);
+        Коллекции.сортировка(пользовательский список, новый  компаратор<Клиент>() {
+            @Переопределение
+            сравнить  int  public(Customer  cust1, Customer  cust2) {
+                cust1  возвращает.getName().compareToIgnoreCase(cust2.getName());
+            }
+        });
+        возврат  пользовательского списка;
+    }
+
+    ArrayList  public<Customer> getCustomerListWithInternational(долгое  время международный){
+        ArrayList<Клиент> custlist = новый  ArrayList<>();
+        для (Customer  cust : Список клиентов){
+            если (cust.getTimeInternational() > timeInternational){
+                пользовательский список.добавить(cust);
+            }
+        }
+        возврат  пользовательского списка;
+    }
+
+    ArrayList  public<Customer> getCustomerListWithLocal(long timeLocal){
+        ArrayList<Клиент> custlist = новый  ArrayList<>();
+        для (Customer  cust : Список клиентов){
+            if (cust.getTimeLocal() > timeLocal){
+                пользовательский список.добавить(cust);
+            }
+        }
+        возврат  пользовательского списка;
+    }
+}
+
+Класс клиента  {
+
+    totalCustomers  int  статический  частный = 0;
+    идентификатор  final  int  private = totalCustomers++;
+
+    строка фамилии   закрыта;
+    строка имени   приватная;
+    строка отчества   закрыта;
+    строка адреса   закрыта;
+    Номер карточки длинный   приватный;
+    дебетовый  двойной  частный;
+    кредит  двойной  приватный;
+    Временные  временные интервалы ;
+    Время  международное долгое  частное;
+
+    Клиент (Строка  фамилия, Строка  имя, Строка  отчество, Строка  адрес,
+             Длинный  номер карты, двойной  дебет, двойной  кредит,
+             Время местное  долгое, долгое  время международное){
+
+        this.фамилия = фамилия;
+        this.name = имя;
+        this.отчество = отчество;
+        this.address = адрес;
+        this.cardNumber = Номер карты;
+        это.дебет = дебет;
+        это.кредит = кредит;
+        это.timeLocal = timeLocal;
+        это.timeInternational = timeInternational;
+    }
+
+    setTimeLocal void public(long timeLocal){
+        это.timeLocal = timeLocal;
+    }
+
+    setTimeInternational  void  public(долгое  время международный){
+        это.timeInternational = timeInternational;
+    }
+
+    getId int public(){
+        возврат идентификатора ;
+    }
+
+    getSurname  Строка  public(){
+        возврат фамилии ;
+    }
+
+    getName  Строка  public(){
+        возврат имени ;
+    }
+
+    Получить  общедоступную строку  Patronymic(){
+        возврат отчества  ;
+    }
+
+    Получить  адрес строки  public(){
+        возврат адреса ;
+    }
+
+    getCardNumber  длинный  общедоступный(){
+        Возврат  номера карты;
+    }
+
+    getDebit double public(){
+        дебетовый  возврат;
+    }
+
+    Получить  двойной  публичный кредит(){
+        возврат кредита ;
+    }
+
+    getTimeLocal  длинный  публичный(){
+        Возврат  по времени;
+    }
+
+    getTimeInternational  длинная  публикация (){
+        Время  международного возвращения;
+    }
+
+    toString  Строка  public(){
+        Возвращаемая строка .формат("ИДЕНТИФИКАТОР: %d \t Имя: %s %s %s", идентификатор, имя, фамилия, отчество) + "\n" +
+                String.format("\t \ t \ tCardNumber: %d\t Debit: %10.2f \ t Credit: %10.2f.", Номер карты, дебет, кредит) + "\n" +
+                "Местное время: "+ Местное время + "мс, Международное время: "+ Международное время + "мс".;
+    }
+}
