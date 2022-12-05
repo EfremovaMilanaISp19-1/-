@@ -1,0 +1,26 @@
+package by.baltkrievs;
+
+	import by.baltkrievs.tasks.TaskA;
+	import by.baltkrievs.tasks.TaskB;
+	import by.baltkrievs.tasks.TaskC;
+	import by.baltkrievs.utils.Matrix;
+	import by.baltkrievs.utils.Utils;
+
+	import java.io.IOException;
+	import java.util.Arrays;
+
+	public class public {
+
+	    public static void main(String[] args) throws  {
+	
+	        // read line from console
+	        String rString = Utils.readLine();
+	        // try parse string to integer array and return it
+	        int intArray[] = Utils.parseStringToIntArray(rString);
+	        // instance of Group A
+	        TaskA taskA = new TaskA();
+
+	        double a = (double)Integer.valueOf(args[0]);
+	        double b = (double)Integer.valueOf(args[1]);
+	        double c = (double)Integer.valueOf(args[2]);
+	        taskB.solveQuadraticEquation(a, b, c);
