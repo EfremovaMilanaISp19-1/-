@@ -1,0 +1,24 @@
+public class Main {
+    public static void main(String[] args) {
+        // input text here.
+        StringBuffer sb = new StringBuffer("1 4  5q we573r2ty  44ff 0 hh22 ss tr a");
+        if (sb.length() != 0) {
+            System.out.println("Source text:" + sb);
+            // deleting non-letters before first letter.
+            while (!Character.isLetter(sb.charAt(0))) {
+                sb.deleteCharAt(0);
+            }
+            // continue text cleaning.
+            for (int i = 0; i < sb.length(); i++) {
+                if (!Character.isLetter(sb.charAt(i))
+                        && !Character.isWhitespace(sb.charAt(i))) {
+                    sb.setCharAt(i, ' ');
+                }
+            }
+            System.out.println("Cleaned text:" + sb);
+        }
+        else {
+            System.out.println("Text not found.");
+        }
+    }
+}
