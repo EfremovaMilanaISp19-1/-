@@ -1,0 +1,236 @@
+public class Main {
+    public static void main(String[] args) {
+        Computer comp = new Computer("Windows", "Windows 7 Professional");
+        comp.addProcessor(new Processor(16, "Intel", 4, 4));
+        comp.addHardDisk(new HardDisk(2000, "IDE", 5400, 16));
+        comp.addRAM(new RAM(6, "DDR3", 1600, true));
+        comp.addCdRom(new CD_ROM(128, "LG GSA-5169D", "16x, 48x"));
+
+        System.out.println(comp);
+        comp.switchOn();
+        comp.checkVirus();
+        comp.switchOff();
+    }
+}
+public class CD_ROM extends Component{
+    private String readRate;
+
+    public CD_ROM(int size, String modelName, String readRate) {
+        super(size, modelName);
+        this.readRate = readRate;
+    }
+    public CD_ROM(int size, String modelName, String readRate, boolean virus) {
+        super(size, modelName, virus);
+        this.readRate = readRate;
+    }
+
+    public String getReadRate() {
+        return readRate;
+    }
+
+    public void setReadRate(String readRate) {
+        this.readRate = readRate;
+    }
+}
+public class Component {
+    protected int size;
+    protected String modelName;
+    protected boolean virus;
+
+    public Component(int size, String modelName, boolean virus) {
+        this.size = size;
+        this.modelName = modelName;
+        this.virus = virus;
+    }
+    public Component (int size, String modelName) {
+        this.size = size;
+        this.modelName = modelName;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public boolean isVirus() {
+        return virus;
+    }
+
+    public void setVirus(boolean virus) {
+        this.virus = virus;
+    }
+}
+public class Computer {
+    private String operatingSystem;
+    private String edition;
+    private HardDisk hardDisk;
+    private CD_ROM cdRom;
+    private RAM ram;
+    private Processor processor;
+
+    public Computer(String operatingSystem, String edition) {
+        this.operatingSystem = operatingSystem;
+        this.edition = edition;
+    }
+
+    public String getOperatingSystem() {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public void addHardDisk(HardDisk hardDisk) {
+        this.hardDisk = hardDisk;
+    }
+
+    public void addCdRom(CD_ROM cdRom) {
+        this.cdRom = cdRom;
+    }
+
+    public void addRAM(RAM ram) {
+        this.ram = ram;
+    }
+
+    public void addProcessor(Processor processor) {
+        this.processor = processor;
+    }
+    public void switchOn(){
+        System.out.println("Computer is ON.");
+    }
+    public void switchOff(){
+        System.out.println("Computer is OFF.");
+    }
+    public void checkVirus(){
+        if(ram.isVirus() || hardDisk.isVirus() || cdRom.isVirus() || processor.isVirus()){
+            System.out.println("The virus is detected.");
+        }
+        else System.out.println("Keep calm and work on...");
+    }
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "operatingSystem='" + operatingSystem + '\'' +
+                ", edition='" + edition + '\'' +
+                ", hardDisk=" + hardDisk +
+                ", cdRom=" + cdRom +
+                ", ram=" + ram +
+                ", processor=" + processor +
+                '}';
+    }
+}
+public class ComputerRunner {
+    public static void main(String[] args) {
+        Computer comp = new Computer("Windows", "Windows 7 Professional");
+        comp.addProcessor(new Processor(16, "Intel", 4, 4));
+        comp.addHardDisk(new HardDisk(2000, "IDE", 5400, 16));
+        comp.addRAM(new RAM(6, "DDR3", 1600, true));
+        comp.addCdRom(new CD_ROM(128, "LG GSA-5169D", "16x, 48x"));
+
+        System.out.println(comp);
+        comp.switchOn();
+        comp.checkVirus();
+        comp.switchOff();
+    }
+}
+public class HardDisk extends Component {
+    private int spindleSpeed;
+    private int cluster;
+
+    public HardDisk(int size, String modelName, int spindleSpeed, int cluster) {
+        super(size, modelName);
+        this.spindleSpeed = spindleSpeed;
+        this.cluster = cluster;
+    }
+    public HardDisk(int size, String modelName, int spindleSpeed, int cluster, boolean virus) {
+        super(size, modelName, virus);
+        this.spindleSpeed = spindleSpeed;
+        this.cluster = cluster;
+    }
+    public int getSpindleSpeed() {
+        return spindleSpeed;
+    }
+
+    public void setSpindleSpeed(int spindleSpeed) {
+        this.spindleSpeed = spindleSpeed;
+    }
+
+    public int getCluster() {
+        return cluster;
+    }
+
+    public void setCluster(int cluster) {
+        this.cluster = cluster;
+    }
+}
+public class Processor extends Component {
+    private int clockSpeed;
+    private int core;
+
+    public Processor(int size, String modelName, int clockSpeed, int core) {
+        super(size, modelName);
+        this.clockSpeed = clockSpeed;
+        this.core = core;
+    }
+    public Processor(int size, String modelName, int clockSpeed, int core, boolean virus) {
+        super(size, modelName, virus);
+        this.clockSpeed = clockSpeed;
+        this.core = core;
+    }
+
+    public int getClockSpeed() {
+        return clockSpeed;
+    }
+
+    public void setClockSpeed(int clockSpeed) {
+        this.clockSpeed = clockSpeed;
+    }
+
+    public int getCore() {
+        return core;
+    }
+
+    public void setCore(int core) {
+        this.core = core;
+    }
+}
+public class RAM extends Component {
+    private int frequency;
+
+    public RAM(int size, String modelName, int frequency) {
+        super(size, modelName);
+        this.frequency = frequency;
+    }
+    public RAM(int size, String modelName, int frequency, boolean virus) {
+        super(size, modelName, virus);
+        this.frequency = frequency;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
+    }
+}
